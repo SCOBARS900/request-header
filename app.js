@@ -1,8 +1,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var cors = require('cors');
-var http = require('http');
-var fs = require('fs');
 
 
 var app = express();
@@ -14,7 +12,14 @@ app.set('port', (process.env.PORT || 3000));
 
 
 
-app.use(express.static('public'));
+app.get('/api/whoami', function(req, res) {
+    var ipU = req.ip;
+    var languageU = req.acceptsLanguages()[0];
+    
+    res.json({ipadress: ipU, language: languageU, software: softwareU});
+});
+
+
 
 
 
