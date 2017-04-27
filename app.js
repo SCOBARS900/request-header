@@ -20,6 +20,10 @@ app.get('/userinfo', function(req, res) {
     var languageU = req.acceptsLanguages()[0];
     var softwareU = req.useragent.os;
     
+    if (ipU.substr(0, 7) == "::ffff:") {
+    ipU = ipU.substr(7)
+    }
+    
     res.json({ipadress: ipU, language: languageU, software: softwareU});
 });
 
